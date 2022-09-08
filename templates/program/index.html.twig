@@ -1,11 +1,35 @@
-{% extends "base.html.twig" %}
+{% extends 'base.html.twig' %}
 
-{% block title %}index.html.twig
+{% block title %}All programs
 {% endblock %}
 
-{% block header %}{% endblock %}
-
 {% block body %}
-	<h1>Bienvenue!</h1>
-	<img src="https://img.freepik.com/free-vector/city-park-with-green-trees-lawn_107791-5449.jpg?w=900&t=st=1662452864~exp=1662453464~hmac=aad98f94d14e7837d33fd67790da2f3ef78ce1ee3477b54d425f3cc69557e611" alt=""/>
+	<h1>Toutes les séries de la table program :
+	</h1>
+	{% for program in programs %}
+		<div>
+			<h2>{{ loop.index }}
+				/
+				{{ program.title }}
+				- Catégorie :
+				{{ program.category.name }}</h2>
+			<p>{{ program.summary }}</p>
+			{# Lien vers la fiche de la série : #}
+			<a href="{{ path("program_show", { id: program.id }) }}">Voir la fiche</a>
+		</div>
+		<div>
+			<h2>{{ loop.index }}
+				/
+				{{ program.title }}
+				- Catégorie :
+				{{ program.category.name }}</h2>
+			<p>{{ program.summary }}</p>
+		</div>
+	{% else %}
+		Aucune série trouvée.
+	{% endfor %}
+
+	<a href="{{ path('category_index') }}">
+		Retour aux catégories
+	</a>
 {% endblock %}

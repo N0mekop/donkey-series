@@ -23,7 +23,7 @@ class Program
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $poster = null;
 
-    #[ORM\ManyToOne(targetEntity: "App\Entity\Category")]
+    #[ORM\ManyToOne(targetEntity: Category::class)]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 

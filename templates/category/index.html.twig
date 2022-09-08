@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All categories
+{% endblock %}
+
+{% block body %}
+	<h1>Catégories :
+	</h1>
+	{% for category in categories %}
+		<div>
+			<h2>{{ loop.index }}
+				-
+				{{ category.name }}</h2>
+			- id :
+			{{ category.id }}
+			<a href="{{path('category_show', { categoryName: category.name })}}">
+				Voir la liste des films
+			</a>
+		</div>
+	{% endfor %}
+{% endblock %}
