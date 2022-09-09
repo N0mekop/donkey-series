@@ -23,9 +23,9 @@ class Program
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $poster = null;
 
-    #[ORM\ManyToOne(targetEntity: Category::class)]
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: "programs")]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Category $category = null;
+    private $category;
 
     public function getId(): ?int
     {
