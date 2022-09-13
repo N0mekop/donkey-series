@@ -16,7 +16,7 @@
 	<h2>Liste des épisodes:</h2>
 	<div>
 		{% for episode in episodes %}
-			<a href="#"><br>Episode
+			<a href="{{ path('program_episode_show', { program : program.id, season : season.id, episode : episode.id }) }}"><br>Episode
 				{{ loop.index }}
 				{{ episode.title }}</a>
 		{% endfor %}
