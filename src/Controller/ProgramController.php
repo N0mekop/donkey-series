@@ -2,7 +2,9 @@
 // src/Controller/ProgramController.php
 namespace App\Controller;
 
-
+use App\Entity\Season;
+use App\Entity\Episode;
+use App\Entity\Program;
 use App\Repository\EpisodeRepository;
 use App\Repository\SeasonRepository;
 use App\Repository\ProgramRepository;
@@ -27,16 +29,13 @@ class ProgramController extends AbstractController
         );
     }
     #[Route("/{id<^[0-9]+$>}", name: "show")]
-    public function show(int $id, ProgramRepository $ProgramRepository, SeasonRepository $seasonRepository): Response
+    public function show(Program $program, SeasonRepository $seasonRepository): Response
     {
-        $program = $ProgramRepository->findOneBy([
-            'id' => $id
-        ]);
         $seasons = $seasonRepository->findBy([
             'program_id' => $program->getId()
         ]);
         if (!$program) {
-            throw $this->createNotFoundException('No program with id : ' . $id . ' found in program\'s table.');
+            throw $this->createNotFoundException('No program with this id found in program\'s table.');
         }
         return $this->render(
             'program/show.html.twig',
@@ -46,15 +45,9 @@ class ProgramController extends AbstractController
             ]
         );
     }
-    #[Route("/{programId<\d+>}/seasons/{seasonId<\d+>}", name: "season_show")]
-    public function showSeason(int $programId, int $seasonId, ProgramRepository $programRepository, EpisodeRepository $episodeRepository, SeasonRepository $seasonRepository): Response
+    #[Route("/{program}/seasons/{season}", name: "season_show")]
+    public function showSeason(Program $program, Season $season, EpisodeRepository $episodeRepository): Response
     {
-        $program = $programRepository->findOneBy([
-            'id' => $programId,
-        ]);
-        $season = $seasonRepository->findOneBy([
-            'id' => $seasonId,
-        ]);
         $episodes = $episodeRepository->findBy([
             'season_id' => $season->getId(),
         ]);
@@ -64,6 +57,18 @@ class ProgramController extends AbstractController
                 'program' => $program,
                 'season' => $season,
                 'episodes' => $episodes,
+            ]
+        );
+    }
+    #[Route("/{program}/seasons/{season}/episode/{episode}", name: "episode_show")]
+    public function showEpisode(Program $program, Season $season, Episode $episode): Response
+    {
+        return $this->render(
+            'program/episode_show.html.twig',
+            [
+                'program' => $program,
+                'season' => $season,
+                'episode' => $episode,
             ]
         );
     }
