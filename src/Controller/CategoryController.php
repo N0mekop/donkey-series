@@ -2,6 +2,10 @@
 // src/Controller/CategoryController.php
 namespace App\Controller;
 
+use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Category;
+use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use App\Repository\ProgramRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,6 +29,20 @@ class CategoryController extends AbstractController
             'category/index.html.twig',
             ['categories' => $categories,]
         );
+    }
+    #[Route("/new", name: "new")]
+    public function new(Request $request, ManagerRegistry $managerRegistry): Response
+    {
+        $category = new Category();
+        $form = $this->createForm(CategoryType::class, $category);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            $entityManager = $managerRegistry->getManager();
+            $entityManager->persist($category);
+            $entityManager->flush();
+            return $this->redirectToRoute('category_index');
+        }
+        return $this->render('category/new.html.twig', ["form" => $form->createView()]);
     }
     #[Route('/{categoryName}', name: 'show')]
     public function show(string $categoryName, CategoryRepository $categoryRepository, ProgramRepository $programRepository): Response
