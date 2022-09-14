@@ -33,7 +33,7 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
         $season->setNumber(1);
         $season->setYear(2022);
         $season->setDescription("Saison 1");
-        $season->setProgramId($this->getReference(ProgramFixtures::PROGRAM_AMERICAN_HORROR_STORY));
+        $season->setProgram($this->getReference(ProgramFixtures::PROGRAM_AMERICAN_HORROR_STORY));
         $this->addReference(self::SEASON_AMERICAN_HORROR_STORY_1, $season);
         $manager->persist($season);
 
@@ -41,7 +41,7 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
         $season->setNumber(1);
         $season->setYear(2020);
         $season->setDescription("Saison 1");
-        $season->setProgramId($this->getReference(ProgramFixtures::PROGRAM_BLACK_MIRROR));
+        $season->setProgram($this->getReference(ProgramFixtures::PROGRAM_BLACK_MIRROR));
         $this->addReference(self::SEASON_BLACK_MIRROR_1, $season);
         $manager->persist($season);
 
@@ -49,7 +49,7 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
         $season->setNumber(2);
         $season->setYear(2022);
         $season->setDescription("Saison 2");
-        $season->setProgramId($this->getReference(ProgramFixtures::PROGRAM_BLACK_MIRROR));
+        $season->setProgram($this->getReference(ProgramFixtures::PROGRAM_BLACK_MIRROR));
         $this->addReference(self::SEASON_BLACK_MIRROR_2, $season);
         $manager->persist($season);
 
@@ -57,7 +57,7 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
         $season->setNumber(1);
         $season->setYear(2011);
         $season->setDescription("Saison 1");
-        $season->setProgramId($this->getReference(ProgramFixtures::PROGRAM_DIVERGENTE));
+        $season->setProgram($this->getReference(ProgramFixtures::PROGRAM_DIVERGENTE));
         $this->addReference(self::SEASON_DIVERGENTE_1, $season);
         $manager->persist($season);
 
@@ -65,7 +65,7 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
         $season->setNumber(2);
         $season->setYear(2015);
         $season->setDescription("Saison 2");
-        $season->setProgramId($this->getReference(ProgramFixtures::PROGRAM_DIVERGENTE));
+        $season->setProgram($this->getReference(ProgramFixtures::PROGRAM_DIVERGENTE));
         $this->addReference(self::SEASON_DIVERGENTE_2, $season);
         $manager->persist($season);
 
@@ -73,7 +73,7 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
         $season->setNumber(3);
         $season->setYear(2016);
         $season->setDescription("Saison 3");
-        $season->setProgramId($this->getReference(ProgramFixtures::PROGRAM_DIVERGENTE));
+        $season->setProgram($this->getReference(ProgramFixtures::PROGRAM_DIVERGENTE));
         $this->addReference(self::SEASON_DIVERGENTE_3, $season);
         $manager->persist($season);
 
@@ -81,7 +81,7 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
         $season->setNumber(1);
         $season->setYear(2020);
         $season->setDescription("Saison 1");
-        $season->setProgramId($this->getReference(ProgramFixtures::PROGRAM_FEAR_THE_WALKING_DEAD));
+        $season->setProgram($this->getReference(ProgramFixtures::PROGRAM_FEAR_THE_WALKING_DEAD));
         $this->addReference(self::SEASON_FEAR_THE_WALKING_DEAD_1, $season);
         $manager->persist($season);
 
@@ -89,7 +89,7 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
         $season->setNumber(1);
         $season->setYear(2012);
         $season->setDescription("Saison 1");
-        $season->setProgramId($this->getReference(ProgramFixtures::PROGRAM_GAME_OF_THRONES));
+        $season->setProgram($this->getReference(ProgramFixtures::PROGRAM_GAME_OF_THRONES));
         $this->addReference(self::SEASON_GAME_OF_THRONES_1, $season);
         $manager->persist($season);
 
@@ -97,7 +97,7 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
         $season->setNumber(1);
         $season->setYear(2008);
         $season->setDescription("Saison 1");
-        $season->setProgramId($this->getReference(ProgramFixtures::PROGRAM_HERO_CORP));
+        $season->setProgram($this->getReference(ProgramFixtures::PROGRAM_HERO_CORP));
         $this->addReference(self::SEASON_HERO_CORP_1, $season);
         $manager->persist($season);
 
@@ -105,7 +105,7 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
         $season->setNumber(1);
         $season->setYear(2007);
         $season->setDescription("Saison 1");
-        $season->setProgramId($this->getReference(ProgramFixtures::PROGRAM_LOVE_DEATH_AND_ROBOTS));
+        $season->setProgram($this->getReference(ProgramFixtures::PROGRAM_LOVE_DEATH_AND_ROBOTS));
         $this->addReference(self::SEASON_LOVE_DEATH_AND_ROBOTS_1, $season);
         $manager->persist($season);
 
@@ -113,7 +113,7 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
         $season->setNumber(1);
         $season->setYear(2016);
         $season->setDescription("Saison 1");
-        $season->setProgramId($this->getReference(ProgramFixtures::PROGRAM_PENNY_DREADFUL));
+        $season->setProgram($this->getReference(ProgramFixtures::PROGRAM_PENNY_DREADFUL));
         $this->addReference(self::SEASON_PENNY_DREADFUL_1, $season);
         $manager->persist($season);
 
@@ -121,7 +121,7 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
         $season->setNumber(1);
         $season->setYear(2022);
         $season->setDescription("Saison 1");
-        $season->setProgramId($this->getReference(ProgramFixtures::PROGRAM_PLANET_EARTH_II));
+        $season->setProgram($this->getReference(ProgramFixtures::PROGRAM_PLANET_EARTH_II));
         $this->addReference(self::SEASON_PLANET_EARTH_II_1, $season);
         $manager->persist($season);
 
@@ -129,7 +129,7 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
         $season->setNumber(1);
         $season->setYear(2013);
         $season->setDescription("Saison 1");
-        $season->setProgramId($this->getReference(ProgramFixtures::PROGRAM_THE_HAUNTING_OF_HILL_HOUSE));
+        $season->setProgram($this->getReference(ProgramFixtures::PROGRAM_THE_HAUNTING_OF_HILL_HOUSE));
         $this->addReference(self::SEASON_THE_HAUNTING_OF_HILL_HOUSE_1, $season);
         $manager->persist($season);
 
@@ -137,7 +137,7 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
         $season->setNumber(1);
         $season->setYear(2014);
         $season->setDescription("Saison 1");
-        $season->setProgramId($this->getReference(ProgramFixtures::PROGRAM_WALKING_DEAD));
+        $season->setProgram($this->getReference(ProgramFixtures::PROGRAM_WALKING_DEAD));
         $this->addReference(self::SEASON_WALKING_DEAD_1, $season);
         $manager->persist($season);
 

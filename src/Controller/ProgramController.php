@@ -2,14 +2,17 @@
 // src/Controller/ProgramController.php
 namespace App\Controller;
 
+use Doctrine\Persistence\ManagerRegistry;
 use App\Entity\Season;
 use App\Entity\Episode;
 use App\Entity\Program;
+use App\Form\ProgramType;
 use App\Repository\EpisodeRepository;
 use App\Repository\SeasonRepository;
 use App\Repository\ProgramRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route("/program", name: "program_")]
@@ -27,6 +30,22 @@ class ProgramController extends AbstractController
             'program/index.html.twig',
             ['website' => 'Donkey Séries', 'programs' => $programs]
         );
+    }
+    #[Route('/new', name: 'new_')]
+    public function new(Request $request, ManagerRegistry $managerRegistry): Response
+    {
+        $program = new Program();
+        $form = $this->createForm(ProgramType::class, $program);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            $entityManager = $managerRegistry->getManager();
+            $entityManager->persist($program);
+            $entityManager->flush();
+            return $this->redirectToRoute('program_app_index');
+        }
+        return $this->render('program/new.html.twig', [
+            "form" => $form->createView(),
+        ]);
     }
     #[Route("/{id<^[0-9]+$>}", name: "show")]
     public function show(Program $program, SeasonRepository $seasonRepository): Response
